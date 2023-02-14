@@ -14,6 +14,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.Alignment.Companion.End
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -117,14 +118,20 @@ fun MyComponent(message: MyMessage) {
         )
 
         {
-            Text(
-                message.body,
-                modifier = Modifier
-                    .fillMaxWidth()
+            Column(
+                Modifier
                     .padding(10.dp),
-            )
+            ) {
+                    Text(
+                        message.body,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(10.dp),
+                    )
+                    Text(text = message.timestamp.format(formatter), Modifier.align(End))
+                }
             }
-    }
+        }
 
 
 
